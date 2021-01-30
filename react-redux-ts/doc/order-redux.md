@@ -15,16 +15,16 @@ function buyCake () {
 
 2.  reducer를 작성해준다.
 
-    초기 값을 작성
+    a. 초기 값을 작성
 
 ```
 const initialState = { numOfCakes: 10 }
 ```
 
-    그 다음 함수 작성, reducer는 함수다.
+    b. 그 다음 함수 작성, reducer는 함수다.
 
 ```
-   const reducer = (state = initialState, action) => {
+   const cackeReducer = (state = initialState, action) => {
        switch(action.type) {
        case BUY_CAKE: return {
            ...state,
@@ -36,7 +36,19 @@ const initialState = { numOfCakes: 10 }
 }
 ```
 
-3. store를 만들어준다
+c. reducer 가 여러개면 하나로 묶어준다
+
+    ```
+    const combineReducers =  redux.combineReducers
+    .
+    .
+    .
+    const rootReducer = combineReducers({
+      cake: cackeReducer,
+      iceCream: iceCreamReducer
+    })
+
+3. store 생성
 
 a. store 만들어준다
 
@@ -45,7 +57,7 @@ const createStore = redux.createStore
 .
 .
 .
-const store = createStore(reducer)
+const store = createStore(rootReducer)
 ```
 
 b. subscribe 해준다. <br>
@@ -61,6 +73,12 @@ dispatch from 'View(Component)' to 'Store'
 ```
 store.dispatch(buyCake())
 store.dispatch(buyCake())
-
-
 ```
+
+4. 미들웨어 <br>
+   redux-logger : 로그(기록)을 남겨준다 <br>
+   https://github.com/LogRocket/redux-logger
+   <br><br>
+   redux-thunk, redux-saga : 비동기 작업을 처리해준다
+   참고 자료
+   https://react.vlpt.us/
