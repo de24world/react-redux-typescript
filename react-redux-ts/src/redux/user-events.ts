@@ -1,4 +1,4 @@
-import { AnyAction } from "redux";
+import { AnyAction } from 'redux';
 
 interface UserEvent {
   id: number;
@@ -8,13 +8,13 @@ interface UserEvent {
 }
 
 interface UserEventsState {
-  byIds: Record<UserEvent["id"], UserEvent>;
-  allIds: UserEvent["id"][];
+  byIds: Record<UserEvent['id'], UserEvent>;
+  allIds: UserEvent['id'][];
 }
 
 const initialState: UserEventsState = {
   byIds: {},
-  allIds: [],
+  allIds: []
 };
 
 const userEventsReducer = (
