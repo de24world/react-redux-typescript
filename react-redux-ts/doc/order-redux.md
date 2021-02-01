@@ -75,10 +75,62 @@ store.dispatch(buyCake())
 store.dispatch(buyCake())
 ```
 
-4. 미들웨어 <br>
-   redux-logger : 로그(기록)을 남겨준다 <br>
-   https://github.com/LogRocket/redux-logger
-   <br><br>
-   redux-thunk, redux-saga : 비동기 작업을 처리해준다
-   참고 자료
-   https://react.vlpt.us/
+4. connect 이용하여 리액트 컴포너틑에 넘기기 <br>
+   mapStateToProps : state 값을 props로 전달<br>
+   mapDispatchToProps : dispatch 변경 값을 props로 전달. <br> 예를 들어 component 내 에서 변경된 값을 reducer로 전달하여 다시 변경할 수도 있다. (https://youtu.be/T-q4cmSEX-E 28분경 참조)
+
+```
+import { connect } from 'react-redux'
+import { addSubscriber } from '../redux/subscribers/actions'
+const Subscribers = (props) => {
+    return (
+        <div>
+            <h2> 구독자 수  {props.count} </h2>
+            <button> onClick={() => props.addSubscriber()}
+        </div>
+    )
+}
+
+const mapStateToProps = (state) => {
+    return {
+        count.state.count
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addSubscriber: () => dispatch(addSubscriber())
+    }
+}
+
+export default connect(mapStateToProps)(Subscribers)
+
+```
+
+5. 미들웨어 <br>
+
+미들웨어 대표적인 3가지 <br>
+redux-logger : 로그(기록)을 남겨준다 <br>
+https://github.com/LogRocket/redux-logger
+<br>
+redux-thunk, redux-saga : 비동기 작업을 처리해준다
+<br>
+참고 자료 <br>
+https://react.vlpt.us/
+
+<br>
+사용하고자 하는 미들웨어를 applyMiddleware 와 함께 Store에 넣어준다. 예 : logger
+```
+<!-- store.js -->
+import { createStore, applyMiddleware } from 'redux'
+import rootReducer from './rootReducer'
+<!-- rootReducer에는 reducer를 컴바인시켜주었다 -->
+import logger from 'redux-logger'
+
+const store = createStore(rootReducer, applyMiddleware(logger))
+
+export default store;
+
+```
+
+```
