@@ -108,18 +108,20 @@ export default connect(mapStateToProps)(Subscribers)
 ```
 
 5. 미들웨어 <br>
-
-미들웨어 대표적인 3가지 <br>
-redux-logger : 로그(기록)을 남겨준다 <br>
-https://github.com/LogRocket/redux-logger
-<br>
-redux-thunk, redux-saga : 비동기 작업을 처리해준다
-<br>
-참고 자료 <br>
-https://react.vlpt.us/
+   참조 : https://velopert.com/3401 <br>
+   미들웨어 대표적인 3가지 <br>
+   redux-logger : 로그(기록)을 남겨준다 <br>
+   https://github.com/LogRocket/redux-logger
+   <br>
+   redux-thunk, redux-saga : 비동기 작업을 처리해준다 <br>
+   두가지 차이 : https://velog.io/@dongwon2/Redux-Thunk-vs-Redux-Saga%EB%A5%BC-%EB%B9%84%EA%B5%90%ED%95%B4-%EB%B4%85%EC%8B%9C%EB%8B%A4-
+   <br>
+   참고 자료 <br>
+   https://react.vlpt.us/
 
 <br>
 사용하고자 하는 미들웨어를 applyMiddleware 와 함께 Store에 넣어준다. 예 : logger
+
 ```
 <!-- store.js -->
 import { createStore, applyMiddleware } from 'redux'
@@ -127,10 +129,15 @@ import rootReducer from './rootReducer'
 <!-- rootReducer에는 reducer를 컴바인시켜주었다 -->
 import logger from 'redux-logger'
 
-const store = createStore(rootReducer, applyMiddleware(logger))
+const middleware = [logger]
+
+const store = createStore(rootReducer, applyMiddleware(...middleware))
 
 export default store;
-
 ```
 
-```
+리덕스 폴더구조 <br>
+Rails Style: 폴더들을 “actions”, “constants”, “reducers”, “containers”, “components” 로 구분합니다. <br>
+Domain Style: 폴더들을 기능이나 도메인 단위로 구분합니다. 각각의 폴더에 파일 타입별로 하위 폴더가 있을 수 있습니다. <br>
+“Ducks”1: domain-style과 비슷하지만, 명확하게 액션과 리듀서를 함께 묶습니다. 대부분 같은 파일 안에 정의됩니다. <br>
+https://livebook.manning.com/book/redux-in-action/chapter-11/20
