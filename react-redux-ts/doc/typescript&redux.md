@@ -77,7 +77,69 @@ import { Provider } from 'react-redux';
 
 ```
 
-## 3. Store 작성
+## 3. Action 작성
+
+(1) Actions 만들기
+PokemonAcions.ts
+
+```
+import { Dispatch } from 'redux'
+import axios from 'axios'
+import { PokemonDispatchType, POKEMON_SUCCESS, POKEMON_FAIL } from './PokemonActionTypes'  ---> (2) Type 만들기 참조
+
+export const fetchPokemonData = ( pokemnoName : string) => async (dispatch: Dispatch<PokemonDispatchType>) => {
+  try {
+    const res = await.get('....API URL')
+    const data = res.data
+
+    dispatch({
+      type: POKEMON_SUCCESS,
+      payload: data
+    })
+  } catch (err) {
+    dispatch({
+      type: POKEMON_FAIL
+    })
+  }
+}
+
+```
+
+(2) Type 만들기
+PokemnoActionTypes.ts
+
+```
+export const POKEMON_SUCCESS = 'POKEMON_SUCCESS'
+export const POKEMON_FAIL = 'POKEMON_FAIL'
+
+<!-- 받아오는 데이터 값의 타입을 정의해준다 -->
+export type PokemonAbility = {
+  ability: {
+    name: string   ("limber)
+    url: stinrg    ("https://pokeapi.co/api/v2/ability/7/")
+  },
+  is_hidden: boolean    (false)
+  slot: number  (1)
+}
+
+export type PokemonSprites = {
+  front_default: string
+}
+
+export interface pokemonFailDispatch {
+  type: typeof POKEMON_FAIL
+}
+
+export interface pokemonSuccessDispatch {
+  type: typeof POKEMON_SUCCESS
+  payload: {
+    abilities: PokemonAbility[]
+    sprites: PokemonSprites
+  }
+}
+
+export type PokemonDispatchType = pokemonFailDispatch | pokemonSuccessDispatch
+```
 
 <br>
 *일부 패키지는 @types 같이 설치해줘야한다
@@ -87,7 +149,5 @@ import { Provider } from 'react-redux';
 (한글) <br>
 React Redux Thunk Typescript 한번에 박살내기
 https://youtu.be/qSRPwBrDeXU <br>
-리액트 리덕스(Redux)실습강좌 ( 프로젝트에 넣기...) <br>
-https://youtu.be/T-q4cmSEX-E <br>
 (영어) <br>
 https://youtu.be/dZZxegovK9Q

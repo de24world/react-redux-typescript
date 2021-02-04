@@ -141,3 +141,9 @@ Rails Style: 폴더들을 “actions”, “constants”, “reducers”, “con
 Domain Style: 폴더들을 기능이나 도메인 단위로 구분합니다. 각각의 폴더에 파일 타입별로 하위 폴더가 있을 수 있습니다. <br>
 “Ducks”1: domain-style과 비슷하지만, 명확하게 액션과 리듀서를 함께 묶습니다. 대부분 같은 파일 안에 정의됩니다. <br>
 https://livebook.manning.com/book/redux-in-action/chapter-11/20
+
+<br>
+참조
+(한글) <br>
+리액트 리덕스(Redux)실습강좌 ( 프로젝트에 넣기...) <br>
+https://youtu.be/T-q4cmSEX-E <br>
