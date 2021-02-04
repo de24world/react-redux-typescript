@@ -73,6 +73,8 @@ import thunk from 'redux-thunk'
 
 const store = createStore(rootReducer,  applyMiddleware(thunk))
 
+export type RootReducerType => ReturnType<typeof rootReducer>
+
 export default store
 ```
 
@@ -157,7 +159,50 @@ export interface pokemonSuccessDispatch {
 export type PokemonDispatchType = pokemonFailDispatch | pokemonSuccessDispatch
 ```
 
-## 4. Component 에서 불러오기
+## 4. Component 에서 불러오기 및 사용하기
+
+App.tsx
+
+```
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootReducerType } from './Store';
+import { fetchPokemonData } from './actions/PokemonActions'
+
+function App() {
+  const [pokemonName, setPokemonName] = useState("")
+  const pokemonReducer = useSelector((state RootReduceType) => state.PokemonReducer)
+  const dispatch = useDispatch()
+
+  const handlePokemoName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPokemonName(event.target.value)
+  }
+  const searchButtonTapped = () => {
+    dispatch(fetchPokemonData(pokemonName))
+  }
+
+  retur (
+    <div className="App">
+      <input value={pokemonName} onChange={handlePokemoName} />
+      <button onClick={searchButtonTapped}>포켓몬찾기</button>
+      <div>
+        {pokemonReducer.success && <div>
+          <p>pokemonName</p>
+          {pokemonReducer.pokemon?.abilites.map((ability) => {
+            return <div>
+            <p>{ability.ability.name}</p>
+            <p>{ability.slot}<p>
+            </div>
+          })}
+          <img src={pokemonReducer.pokemon?.sprites.front_default} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
 
 <br>
 *일부 패키지는 @types 같이 설치해줘야한다
