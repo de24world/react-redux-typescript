@@ -5,14 +5,29 @@
 PokemonReducers.ts
 
 ```
-const initialState = {
+import { POKEMON_FAIL, POKEMON_SUCCESS, PokemonType, PokemonDispatchType } from "../actions/PokemonActionTypes";
 
+const initialState = {
+  success: false
 }
 
-const PokemonReducer (state = initialState, action: any) => {
+const PokemonReducer (state = initialState, action: PokemonDispatchType) => {
   switch (action.type) {
-
-
+    case POKEMON_FAIL:
+      return {
+        ...state,
+        success: false
+      }
+    case POKEMON_SUCCESS:
+      const {abilities, sprites} = action.payload
+      return {
+        ...state
+        success: true,
+        pokeomon: {
+          abilities,
+          sprites
+        }
+      }
   default:
     return state
   }
@@ -26,7 +41,8 @@ PokemonReducers.ts
 
 ```
 interface InitialState {
-
+  success: boolean
+  pokemon: PokemonType
 }
 ```
 
@@ -140,6 +156,8 @@ export interface pokemonSuccessDispatch {
 
 export type PokemonDispatchType = pokemonFailDispatch | pokemonSuccessDispatch
 ```
+
+## 4. Component 에서 불러오기
 
 <br>
 *일부 패키지는 @types 같이 설치해줘야한다
