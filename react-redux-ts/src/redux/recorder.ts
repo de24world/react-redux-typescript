@@ -5,12 +5,12 @@ interface RecorderState {
   dateStart: string;
 }
 
+// action ------------------------
 const START = "recorder/start";
 const STOP = "recorder/stop";
 
 type StartAction = Action<typeof START>;
 type StopAction = Action<typeof STOP>;
-
 export const start = (): StartAction => ({
   type: START,
 });
@@ -23,6 +23,7 @@ export const selectRecorderState = (rootState: RootState) => rootState.recorder;
 export const selectDateStart = (rootState: RootState) =>
   selectRecorderState(rootState).dateStart;
 
+// reducer ----------------------------
 const initialState: RecorderState = {
   dateStart: "",
 };
