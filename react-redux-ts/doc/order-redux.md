@@ -1,6 +1,6 @@
 <img src="https://blog.codecentric.de/files/2017/12/Bildschirmfoto-2017-12-01-um-08.56.48.png" width="900" height="400">
 
-1. Action을 작성해준다. (type도)
+## 1. Action을 작성해준다. (type도)
 
 ```
 const BUY_CAKE = 'BUY_CAKE'
@@ -13,7 +13,7 @@ function buyCake () {
 }
 ```
 
-2.  reducer를 작성해준다.
+## 2. reducer를 작성해준다.
 
     a. 초기 값을 작성
 
@@ -48,7 +48,7 @@ c. reducer 가 여러개면 하나로 묶어준다
       iceCream: iceCreamReducer
     })
 
-3. store 생성
+## 3. store 생성
 
 a. store 만들어준다
 
@@ -107,17 +107,18 @@ export default connect(mapStateToProps)(Subscribers)
 
 ```
 
-5. 미들웨어 <br>
-   참조 : https://velopert.com/3401 <br>
-   미들웨어 대표적인 3가지 <br>
-   redux-logger : 로그(기록)을 남겨준다 <br>
-   https://github.com/LogRocket/redux-logger
-   <br>
-   redux-thunk, redux-saga : 비동기 작업을 처리해준다 <br>
-   두가지 차이 : https://velog.io/@dongwon2/Redux-Thunk-vs-Redux-Saga%EB%A5%BC-%EB%B9%84%EA%B5%90%ED%95%B4-%EB%B4%85%EC%8B%9C%EB%8B%A4-
-   <br>
-   참고 자료 <br>
-   https://react.vlpt.us/
+## 5. 미들웨어 <br>
+
+참조 : https://velopert.com/3401 <br>
+미들웨어 대표적인 3가지 <br>
+redux-logger : 로그(기록)을 남겨준다 <br>
+https://github.com/LogRocket/redux-logger
+<br>
+redux-thunk, redux-saga : 비동기 작업을 처리해준다 <br>
+두가지 차이 : https://velog.io/@dongwon2/Redux-Thunk-vs-Redux-Saga%EB%A5%BC-%EB%B9%84%EA%B5%90%ED%95%B4-%EB%B4%85%EC%8B%9C%EB%8B%A4-
+<br>
+참고 자료 <br>
+https://react.vlpt.us/
 
 <br>
 사용하고자 하는 미들웨어를 applyMiddleware 와 함께 Store에 넣어준다. 예 : logger
