@@ -213,4 +213,5 @@ export default App;
 React Redux Thunk Typescript 한번에 박살내기
 https://youtu.be/qSRPwBrDeXU <br>
 (영어) <br>
-https://youtu.be/dZZxegovK9Q
+https://youtu.be/dZZxegovK9Q<br>
+https://youtu.be/sfmL6bGbiN8
