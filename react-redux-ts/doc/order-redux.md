@@ -76,8 +76,8 @@ store.dispatch(buyCake())
 ```
 
 4. connect 이용하여 리액트 컴포너틑에 넘기기 <br>
-   mapStateToProps : Redux state 값을 React props로 전달<br>
-   mapDispatchToProps : Redux dispatch 변경 값을 React props로 전달. <br> 예를 들어 component 내 에서 변경된 값을 reducer로 전달하여 다시 변경할 수도 있다. (https://youtu.be/T-q4cmSEX-E 28분경 참조)
+   mapStateToProps : Redux state 값을 React props로 전달 = useSelect<br>
+   mapDispatchToProps : Redux dispatch 변경 값을 React props로 전달. = useDispatch <br> 예를 들어 component 내 에서 변경된 값을 reducer로 전달하여 다시 변경할 수도 있다. (https://youtu.be/T-q4cmSEX-E 28분경 참조)
 
 ```
 import { connect } from 'react-redux'

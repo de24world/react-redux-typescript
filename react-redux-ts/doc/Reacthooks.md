@@ -45,6 +45,26 @@ export default CounterOne
 
 ```
 
+## 5. useSelect = mapStateToProps
+
+```
+import React from 'react'
+impport { useSelector } from 'react-redux'
+
+function HooksCakeContainer() {
+  const numOfCakes = useSelector(state => state.numOfCakes)
+
+  return (
+    <div>
+      <h2> Num of cakes - {numOfCackes} <h2>
+      <button> Buy Cacke </button>
+    </div>
+  )
+}
+
+export default HooksCakeContainer
+```
+
 ---
 
 참조
