@@ -13,7 +13,24 @@ function buyCake () {
 }
 ```
 
-## 2. reducer를 작성해준다.
+- data(payload, info) 값을 동적(계속)으로 변경하고 싶다면 데이터 값을 파라미터로 넘겨준다
+
+```
+const changeNickname(data) => {
+    return {
+        type: "CHANGE_NICKNAME',
+        data,
+    }
+}
+
+changeNickname('boogicho');
+// {
+//  type: "CHANGE_NICKNAME",
+//  data: "boogicho',
+// }
+```
+
+## 2. reducer를 작성해준다. (이전상태, 액션) => 다음 상태로 바꿔주는 함수
 
     a. 초기 값을 작성
 

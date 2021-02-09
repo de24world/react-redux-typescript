@@ -65,6 +65,27 @@ function HooksCakeContainer() {
 export default HooksCakeContainer
 ```
 
+## 6. useDispatch = mapDispatchToProps
+
+```
+import React from 'react'
+impport { useSelector } from 'react-redux'
+
+function HooksCakeContainer() {
+  const numOfCakes = useSelector(state => state.numOfCakes)
+  const dispatch = useDispatch()
+
+  return (
+    <div>
+      <h2> Num of cakes - {numOfCackes} <h2>
+      <button onClick={()=>dispatch(buyCake())}> Buy Cacke </button>
+    </div>
+  )
+}
+
+export default HooksCakeContainer
+```
+
 ---
 
 참조
